@@ -12,7 +12,7 @@ const travelStorySchema = new mongoose.Schema(
       required: true,
     },
 
-    visitedLocations: {
+    visitedLocation: {
       type: [String],
       default: [],
     },
