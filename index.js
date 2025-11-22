@@ -26,7 +26,7 @@ const app = express()
 // Enable CORS for frontend (Replace with your frontend URL)
 app.use(
   cors({
-    origin: ["http://localhost:5174", "http://localhost:5173"], //frontend URLs
+    origin: ["http://localhost:5174", "http://localhost:5173" , "https://travel-front-sigma.vercel.app"], //frontend URLs
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow CRUD operations
     credentials: true, // Allow cookies & authorization headers
   })
@@ -37,13 +37,13 @@ app.use(cookieParser())
 // for allowing json object in req body
 app.use(express.json())
 
-
-app.listen(3000, () => {
-  console.log("Server is running on port 3000!")
+const PORT = process.env.PORT || 3000
+app.listen(PORT,  "0.0.0.0", () => {
+  console.log(`Server is running on port ${PORT}!`)
 })
 
 app.use("/api/auth", authRoutes)
-app.use("/api/user", userRoutes)
+app.use("/api/user", userRoutes) 
 app.use("/api/travel-story", travelStoryRoutes)
 
 // server static files from the uploads and assets directory
